@@ -1,0 +1,19 @@
+Package: unpack
+Title: Assign vectors elements to separate variables
+Version: 0.0.0.9000
+Authors@R:
+    person(
+        given = "Konrad",
+        family = "Rudolph",
+        role = c("aut", "cre"),
+        email = "konrad.rudolph@gmail.com",
+        comment = c(ORCID = "0000-0002-9866-7051")
+    )
+URL: https://github.com/klmr/unpack
+BugReports: https://github.com/klmr/unpack/issues
+Description: Syntactic sugar to allow unpacking elements from a vector into
+    separate variables in a single assignment expression.
+Depends: R (>= 3.5.0)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
