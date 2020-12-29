@@ -32,9 +32,9 @@ rest inside a vector:
 ```r
 c[first, second, rest[]] = month.name
 
-message(first)  # January
-message(second) # February
-message(rest)   # March, April, May, …
+message(first)          # January
+message(second)         # February
+message(toString(rest)) # March, April, May, …
 ```
 
 Great!
@@ -54,3 +54,4 @@ if (! requireNamespace('pak')) {
 }
 
 pak::pkg_install('klmr/unpack@main')
+```
