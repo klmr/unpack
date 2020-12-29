@@ -45,3 +45,12 @@ And maybe we only cared about February, and want to ignore the rest:
 c[., feb, .[]] = month.name
 message(feb) # February
 ```
+
+## Installation
+
+```r
+if (! requireNamespace('pak')) {
+    install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
+}
+
+pak::pkg_install('klmr/unpack@main')
