@@ -18,7 +18,7 @@
                     list2env(setNames(as.list(values), names), envir = envir)
                 }
 
-                caller = parent.frame()
+                caller = sys.frame(-1L)
                 names = caller$`*unpack_names*`
                 value = caller$`*unpack_value*`
                 rm(c, `*unpack_names*`, `*unpack_value*`, envir = caller)
