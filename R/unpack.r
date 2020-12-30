@@ -1,3 +1,7 @@
+# This object acts as a proxy to intercept subset assignment via `[<-`, which we
+# overwrite in `[<-.unpack` to perform the vector unpacking.
+c = structure(list(), class = 'unpack')
+
 `[<-.unpack` = function (x, ..., value) {
     assign('*unpack_names*', match.call(expand.dots = FALSE)$..., envir = parent.frame())
     assign('*unpack_value*', value, envir = parent.frame())
@@ -58,5 +62,3 @@ print.unpack = function (x, ...) {
     cat('\u2039syntax: unpack\u203a\n')
     invisible(x)
 }
-
-c = structure(list(), class = 'unpack')
