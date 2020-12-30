@@ -2,6 +2,32 @@
 # overwrite in `[<-.unpack` to perform the vector unpacking.
 c = structure(list(), class = 'unpack')
 
+# Subset assignment of the form
+#
+#   c[vars] = value
+#
+# calls `[<-`, and assigns the result back to `c` [1]:
+#
+#   `*tmp*` = c
+#   c = `[<-`(`*tmp*`, vars, value = value)
+#   rm(`*tmp*`)
+#
+# This means that a new object `c` is created in the calling namespace, which is
+# a copy of the attached package export `unpack::c`. This is undesirable — and
+# doubly so if the user attempts to unpack into a variable `c`:
+#
+#   c[a, b, c] = 1 : 3
+#
+# To make this code work as expected — i.e. only create a variable `c` with the
+# value `3` in the calling environment — it is not sufficient to perform the
+# assignment inside the `[<-` function. Instead, code has to run *after* the
+# assignment of the result of `[<-` back to `c` in the above code.
+#
+# Luckily this is possible: we need to make `c` in the caller’s scope into an
+# active binding, and let the active binding callback remove the `c` and then
+# perform the actual assignment.
+# 
+# [1] <https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Subset-assignment>
 `[<-.unpack` = function (x, ..., value) {
     names = match.call(expand.dots = FALSE)$...
     caller = parent.frame()
