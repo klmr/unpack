@@ -22,10 +22,11 @@ source_files = \
 build: ${bundle_name}
 
 ${bundle_name}: ${source_files}
+	${RM} ${bundle_name}
 	R CMD build .
 
 .PHONY: check
 check: ${bundle_name}
-	R CMD check $< \
+	R CMD check --as-cran $< \
 	| tee /dev/stderr \
 	| grep -q '^Status: OK$$'

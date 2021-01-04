@@ -1,5 +1,5 @@
 Package: unpack
-Title: Assign vectors elements to separate variables
+Title: Assign Vectors Elements to Separate Variables
 Version: 0.0.0.9000
 Authors@R:
     person(

@@ -28,7 +28,7 @@ c = structure(list(), class = 'unpack')
 # perform the actual assignment.
 # 
 # [1] <https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Subset-assignment>
-`[<-.unpack` = function (x, ..., value) {
+`[<-.unpack` = function (c, ..., value) {
     names = match.call(expand.dots = FALSE)$...
     caller = parent.frame()
 
@@ -68,7 +68,7 @@ c = structure(list(), class = 'unpack')
         caller
     )
 
-    invisible(x)
+    invisible(c)
 }
 
 # Helper function that assigns a number of values to names, after checking that
