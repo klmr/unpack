@@ -9,7 +9,7 @@
     items.
 }
 \usage{
-c[\dots] = value
+\special{c[\dots] = value}
 }
 \arguments{
     \item{\dots}{variable names to assign to.}
